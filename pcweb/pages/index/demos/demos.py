@@ -32,13 +32,13 @@ def heading():
     return rx.vstack(
         type_animation(
             sequence=[
-                "Build web apps, faster.",
+                "Analyse Instagram, #Faster.",
                 1000,
-                "Build internal tools, faster.",
+                "View Followers & Following, #NoHassle.",
                 1000,
-                "Build AI apps, faster.",
+                "View Non-Followers, #Haters.",
                 1000,
-                "Build web apps, faster.",
+                "Safe, Secure & Reliable.",
             ],
             font_size=["24px", "30px", "44px", "44px", "44px", "44px"],
             text_align="left",
@@ -47,7 +47,7 @@ def heading():
             line_height="1",
         ),
         rx.chakra.text(
-            "Create your whole app in a single language. Don't worry about writing APIs to connect your frontend and backend.", 
+            "Analyse your whole instagram in a single click. Don't worry about others, connect to your beliefs and followers & Following.", 
             color="#6C6C81",
             font_size=[".8em", ".8em", "1em", "1em", "1em", "1em"],
             text_align="center",
@@ -78,7 +78,7 @@ def demos():
         heading(),
         rx.hstack(
             rx.hstack(
-                example_button("Image Gen"),
+                example_button(""),
                 example_button("Forms"),
                 example_button("Auth"),
                 example_button("Dashboard"),

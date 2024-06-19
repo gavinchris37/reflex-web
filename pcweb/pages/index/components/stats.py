@@ -1,4 +1,5 @@
 import reflex as rx
+#from .pricing import pricing_cards
 
 github_url = "https://github.com/reflex-dev/reflex"
 features_url = "https://github.com/reflex-dev/reflex/issues?q=is%3Aopen"
@@ -16,24 +17,24 @@ def user_count_item(count, platform) -> rx.Component:
 
 def user_count_comp() -> rx.Component:
     return rx.center(
-        rx.tablet_and_desktop(user_count_item(110, "Contributors")),
-        rx.mobile_only(user_count_item(110, "Contributors")),
+        rx.tablet_and_desktop(user_count_item("25K", "Profiles Analysed.")),
+        rx.mobile_only(user_count_item("25K", "Profiles Analysed.")),
         rx.divider(size="4", orientation="vertical"),
-        rx.tablet_and_desktop(user_count_item(5000, "Project created per month")),
-        rx.mobile_only(user_count_item(5000, "Project")),
+        rx.tablet_and_desktop(user_count_item("80K", "Profiles Unfollowed.")),
+        rx.mobile_only(user_count_item("80K", "Profiles Unfollowed.")),
         rx.divider(size="4", orientation="vertical"),
-        rx.tablet_and_desktop(user_count_item(3700, "Discord Members")),
-        rx.mobile_only(user_count_item(3700, "On Discord")),
+        rx.tablet_and_desktop(user_count_item("10K", "Active Members.")),
+        rx.mobile_only(user_count_item("10K", "Active Members.")),
         spacing="5",
         padding="1em",
     )
 
 
-def open_source_badge() -> rx.Component:
+def pricing_badge() -> rx.Component:
     return rx.button(
         rx.flex(
             rx.text(
-                "Open Source",
+                "Pricing Plans",
                 color="transparent",
                 font_size="14px",
                 font_style="normal",
@@ -64,12 +65,12 @@ def open_source_badge() -> rx.Component:
         },
     )
 
-def github_button() -> rx.Component:
+def instagram_button() -> rx.Component:
     return rx.button(
         rx.flex(
-            rx.image(src="/companies/light/github.svg", height="20px", width="20px"),
+            rx.image(src="/companies/light/instagram.svg", height="20px", width="20px"),
             rx.center(
-                "Github",
+                "Instagram",
                 color="#FFFFFF",
                 font_size="14px",
                 font_style="normal",
@@ -78,7 +79,7 @@ def github_button() -> rx.Component:
                 letter_spacing="-0.28px",
             ),
             rx.center(
-                "15.7k",
+                "1000",
                 color="#6151F3",
                 font_size="12px",
                 font_style="normal",
@@ -113,7 +114,7 @@ def github_button() -> rx.Component:
 def invite_message() -> rx.Component:
     return rx.box(
         rx.text(
-            "Contribute to our open-source community.",
+            "Analytics is free from Us. Just pay for other Feature's.",
             color="#D6D6ED",
             font_size="38px",
             weight="bold",
@@ -126,7 +127,7 @@ def invite_message() -> rx.Component:
 def request_buttons() -> rx.Component:
     return rx.hstack(
         rx.button(
-            "Bugs",
+            "Followers",
             color="#2BCEEA",
             weight="Medium",
             height="24px",
@@ -142,11 +143,26 @@ def request_buttons() -> rx.Component:
             },
         ),
         rx.button(
-            "Good First Issues",
+            "Following",
             color="#2BEA8E",
             weight="Medium",
             height="24px",
             border="1px solid #2BEA8E",
+            background_color="rgba(43, 234, 142, 0.25)",
+            on_click=rx.redirect(
+                contribution_url,
+                external=True,
+            ),
+            _hover={
+                "cursor": "pointer",
+            },
+        ),
+        rx.button(
+            "Not Following",
+            color="#2BCEEA",
+            weight="Medium",
+            height="24px",
+            border="1px solid #2BCEEA",
             background_color="rgba(43, 234, 142, 0.25)",
             on_click=rx.redirect(
                 contribution_url,
@@ -162,13 +178,13 @@ def invite_card_comp() -> rx.Component:
     return rx.box(
         rx.flex(
             rx.text(
-                "Contribute to Reflex!", 
+                "Analyse Your Instagram!", 
                 color="#D6D6ED",
                 weight="medium",
             ),
             request_buttons(),
             rx.text(
-                "Start contributing today, checkout our Github for Details",
+                "Start Today, Login for More Details",
                 color="#6C6C81",
                 weight="medium",
             ),
@@ -184,11 +200,225 @@ def invite_card_comp() -> rx.Component:
         box_shadow= "0px 27px 44px -13px rgba(214, 214, 237, 0.10) inset, 0px 0px 27px -4px rgba(0, 0, 0, 0.30);",
     )
 
+def check_item(text: str) -> rx.Component:
+    return rx.hstack(
+        rx.icon("check",  size=18, color="cyan"),
+        rx.text(text, size="4"),
+    )
+
+def no_item(text: str) -> rx.Component:
+    return rx.hstack(
+        rx.icon("octagon-x", size=18, color="crimson"),
+        rx.text(text, size="4"),
+    )
+
+
+def free_features() -> rx.Component:
+    return rx.vstack(
+        check_item("Analyse Account 1/Day."),
+        check_item("Analyse folloing 1/Day."),
+        check_item("Analyse Post's 1/Day."),
+        no_item("Unfollow User's 5/Day."),
+        no_item("Advanced analytics."),
+        no_item("Daily backups."),
+        no_item("Real-time Updates."),
+        width="100%",
+        align_items="start",
+    )
+
+
+def basic_features() -> rx.Component:
+    return rx.vstack(
+        check_item("Analyse Account 99/Day."),
+        check_item("Analyse folloing 99/Day."),
+        check_item("Analyse Post's 99/Day."),
+        check_item("Unfollow User's 500/Day."),
+        check_item("Advanced analytics."),
+        no_item("Daily backups."),
+        no_item("Real-time Updates."),
+        width="100%",
+        align_items="start",
+    )
+
+def premium_features() -> rx.Component:
+    return rx.vstack(
+        check_item("Analyse Account 500/Day."),
+        check_item("Analyse folloing 500/Day."),
+        check_item("Analyse Post's 500/Day."),
+        check_item("Unfollow User's 1500/Day."),
+        check_item("Advanced analytics."),
+        check_item("Daily backups."),
+        check_item("Real-time Updates."),
+        width="100%",
+        align_items="start",
+    )
+
+
+def pricing_card_free() -> rx.Component:
+    return rx.vstack(
+        rx.vstack(
+            rx.badge("Free", weight="bold", size="3", radius="full",variant="surface",color_scheme="gray"),
+            rx.text(
+                "Ideal choice for personal profile Analytics.",
+                size="4",
+                opacity=0.8,
+                align="center",
+            ),
+            rx.hstack(
+                rx.text(
+                    "₹0",
+                    weight="bold",
+                    font_size="3rem",
+                    trim="both",
+                ),
+                rx.text(
+                    "/month",
+                    size="4",
+                    opacity=0.8,
+                    trim="both",
+                ),
+                width="100%",
+                align_items="end",
+                justify="center",
+            ),
+            width="100%",
+            align="center",
+            spacing="6",
+        ),
+        free_features(),
+        rx.button(
+            "Get started",
+            size="3",
+            variant="solid",
+            width="100%",
+            color_scheme="blue",
+        ),
+        spacing="6",
+        border=f"1.5px solid {rx.color('gray', 5)}",
+        background=rx.color("gray", 1),
+        padding="28px",
+        width="100%",
+        max_width="400px",
+        justify="center",
+        border_radius="0.5rem",
+    )
+
+def pricing_card_basic() -> rx.Component:
+    return rx.vstack(
+        rx.vstack(
+            rx.badge("Basic", weight="bold", size="3", radius="full",variant="surface",color_scheme="indigo"),
+            rx.text(
+                "Ideal choice for personal profile Analytics.",
+                size="4",
+                opacity=0.8,
+                align="center",
+            ),
+            rx.hstack(
+                rx.text(
+                    "₹350",
+                    weight="bold",
+                    font_size="3rem",
+                    trim="both",
+                ),
+                rx.text(
+                    "/month",
+                    size="4",
+                    opacity=0.8,
+                    trim="both",
+                ),
+                width="100%",
+                align_items="end",
+                justify="center",
+            ),
+            width="100%",
+            align="center",
+            spacing="6",
+        ),
+        basic_features(),
+        rx.button(
+            "Get started",
+            size="3",
+            variant="solid",
+            width="100%",
+            color_scheme="blue",
+        ),
+        spacing="6",
+        border=f"1.5px solid {rx.color('gray', 5)}",
+        background=rx.color("gray", 1),
+        padding="28px",
+        width="100%",
+        max_width="400px",
+        justify="center",
+        border_radius="0.5rem",
+    )
+
+def pricing_card_premium() -> rx.Component:
+    return rx.vstack(
+        rx.vstack(
+            rx.badge("Premium", weight="bold", size="3", radius="full",variant="surface",color_scheme="crimson"),
+            rx.text(
+                "Ideal choice for personal profile Analytics.",
+                size="4",
+                opacity=0.8,
+                align="center",
+            ),
+            rx.hstack(
+                rx.text(
+                    "₹850",
+                    weight="bold",
+                    font_size="3rem",
+                    trim="both",
+                ),
+                rx.text(
+                    "/month",
+                    size="4",
+                    opacity=0.8,
+                    trim="both",
+                ),
+                width="100%",
+                align_items="end",
+                justify="center",
+            ),
+            width="100%",
+            align="center",
+            spacing="6",
+        ),
+        premium_features(),
+        rx.button(
+            "Get started",
+            size="3",
+            variant="solid",
+            width="100%",
+            color_scheme="blue",
+        ),
+        spacing="6",
+        border=f"1.5px solid {rx.color('gray', 5)}",
+        background=rx.color("gray", 1),
+        padding="28px",
+        width="100%",
+        max_width="400px",
+        justify="center",
+        border_radius="0.5rem",
+    )
+
+def pricing_cards() -> rx.Component:
+    return rx.flex(
+        pricing_card_free(),
+        pricing_card_basic(),
+        pricing_card_premium(),
+        spacing="4",
+        flex_direction=["column", "column", "row"],
+        width="100%",
+        align_items="center",
+    )
+
+
 def stats() -> rx.Component:
     return rx.vstack(
-        open_source_badge(),
+        pricing_badge(),
         invite_message(),
-        github_button(),
+        pricing_cards(),
+        instagram_button(),
         invite_card_comp(),
         user_count_comp(),
         padding="2em",

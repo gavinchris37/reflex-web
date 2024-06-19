@@ -27,7 +27,7 @@ def feature_button_hstack(mobile=False):
 def hero_section_text(mobile=False):
     return rx.vstack(
         rx.chakra.text(
-            "Web apps in pure Python.",
+            "Social Analytics in pure Python.",
             text_align="left" if not mobile else "center",
             background_image="linear-gradient(95deg, #D6D6ED 42.14%, #727280 63.21%)",
             font_size=["24px", "30px", "40px", "54px", "54px", "54px"],
@@ -37,7 +37,7 @@ def hero_section_text(mobile=False):
             
         ),
         rx.chakra.text(
-            "Deploy with a single command.",
+            "Analyse with a single click.",
             text_align="left" if not mobile else "center",
             color="#6C6C81",
             font_size=["24px", "30px", "40px", "54px", "54px", "54px"],
@@ -64,7 +64,7 @@ def hero_section_buttons(mobile=False):
         rx.link(
             rx.flex(
                 rx.button(
-                    "Get Started",
+                    "LogIn",
                     rx.icon(
                     tag="chevron-right",
                         size=18,
@@ -88,7 +88,7 @@ def hero_section_buttons(mobile=False):
         ),
         rx.link(
             rx.button(
-                "Get a demo ",
+                "SignUp ",
                 rx.icon(
                     tag="chevron-right",
                     size=18,

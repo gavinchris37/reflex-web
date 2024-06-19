@@ -14,7 +14,7 @@ def news_letter_text() -> rx.Component:
             line_height="1",            
         ),
         rx.chakra.text(
-            " Get the latest updates and news about Reflex.",
+            " Get the latest updates and news about HyInsta.",
             text_align="left",
             color="#6C6C81",
             font_weight="bold",
@@ -28,7 +28,7 @@ def news_letter_text() -> rx.Component:
 def message_group():
     return rx.vstack(
         rx.chakra.text(
-            "Welcome to the Reflex Community!",
+            "Welcome to the HyInsta Community!",
             text_align="left",
             background_image="linear-gradient(95deg, #D6D6ED 42.14%, #727280 63.21%)",
             font_size=["12px", "15px", "22px", "28px", "35px", "35px"],

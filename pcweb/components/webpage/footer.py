@@ -143,7 +143,7 @@ def news_letter(align="left"):
     return rx.vstack(
         rx.text("Join Newsletter", color="#E8E8F4", style=footer_item_style),
         rx.text(
-            "Get the latest updates and news about Reflex.",
+            "Get the latest updates and news about HyInsta.",
             color="#6C6C81",
             font_size="0.8em",
         ),
@@ -248,7 +248,7 @@ def footer(style=footer_style):
             ),
             rx.hstack(
                 rx.text(
-                    "Copyright © 2024 Pynecone, Inc.",
+                    "Copyright © 2024 HyInsta, Inc.",
                     style=footer_item_style,
                     font_size="0.8em",
                 ),
